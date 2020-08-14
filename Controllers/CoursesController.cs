@@ -52,6 +52,9 @@ namespace hw2.Controllers
                 return BadRequest();
             }
 
+            if (CourseNameCheck(course.Title))
+                return BadRequest("Multiple Title!!");
+
             _context.Entry(course).State = EntityState.Modified;
 
             try
@@ -79,6 +82,9 @@ namespace hw2.Controllers
         [HttpPost]
         public async Task<ActionResult<Course>> PostCourse(Course course)
         {
+            if (CourseNameCheck(course.Title))
+                return BadRequest("Multiple Title!!");
+
             _context.Course.Add(course);
             await _context.SaveChangesAsync();
 
@@ -128,5 +134,11 @@ namespace hw2.Controllers
         {
             return _context.Course.Any(e => e.CourseId == id);
         }
+
+        private bool CourseNameCheck(string title)
+        {
+            return _context.Course.Any(e => e.Title == title);
+        }
+
     }
 }

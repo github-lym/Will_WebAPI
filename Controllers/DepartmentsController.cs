@@ -52,6 +52,9 @@ namespace hw2.Controllers
                 return BadRequest();
             }
 
+            if (DepartmentNameCheck(department.Name))
+                return BadRequest("Multiple Name!!");
+
             _context.Entry(department).State = EntityState.Modified;
 
             try
@@ -79,6 +82,9 @@ namespace hw2.Controllers
         [HttpPost]
         public async Task<ActionResult<Department>> PostDepartment(Department department)
         {
+            if (DepartmentNameCheck(department.Name))
+                return BadRequest("Multiple Name!!");
+
             _context.Department.Add(department);
             await _context.SaveChangesAsync();
 
@@ -157,6 +163,11 @@ namespace hw2.Controllers
         private bool DepartmentExists(int id)
         {
             return _context.Department.Any(e => e.DepartmentId == id);
+        }
+
+        private bool DepartmentNameCheck(string name)
+        {
+            return _context.Department.Any(e => e.Name == name);
         }
     }
 }
