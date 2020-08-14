@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace hw2.Models
 {
+    /// <summary>
+    /// 新增屬性用
+    /// </summary>
     public partial class ContosoUniversityContext : DbContext
     {
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder)

@@ -101,6 +101,7 @@ namespace hw2.Controllers
             return department;
         }
 
+        #region stored procedure操作區
         // POST: api/Departments/spc
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
@@ -151,6 +152,7 @@ namespace hw2.Controllers
 
             return department;
         }
+        #endregion
 
         private bool DepartmentExists(int id)
         {
