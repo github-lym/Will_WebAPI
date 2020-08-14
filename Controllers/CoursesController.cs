@@ -114,11 +114,29 @@ namespace hw2.Controllers
             return await _context.VwCourseStudents.ToListAsync();
         }
 
+        // GET: vwCourseStudents/id
+        [HttpGet("~/vwCourseStudents/{id}")]
+        public async Task<ActionResult<IEnumerable<VwCourseStudents>>> GetCourseStudents(int id)
+        {
+            var result = await _context.VwCourseStudents.Where(d => d.CourseId == id).ToListAsync();
+            if (result == null) return NotFound();
+            return result;
+        }
+
         // GET: vwCourseStudentCount
         [HttpGet("~/vwCourseStudentCount")]
         public async Task<ActionResult<IEnumerable<VwCourseStudentCount>>> GetCourseStudentCount()
         {
             return await _context.VwCourseStudentCount.ToListAsync();
+        }
+
+        // GET: vwCourseStudentCount/id
+        [HttpGet("~/VwCourseStudentCount/{id}")]
+        public async Task<ActionResult<IEnumerable<VwCourseStudentCount>>> GetCourseStudentCount(int id)
+        {
+            var result = await _context.VwCourseStudentCount.Where(d => d.CourseId == id).ToListAsync();
+            if (result == null) return NotFound();
+            return result;
         }
 
         // GET: vwDepartmentCourseCount 
@@ -128,6 +146,16 @@ namespace hw2.Controllers
 
             var sql = _context.VwDepartmentCourseCount.FromSqlRaw("SELECT * FROM dbo.vwDepartmentCourseCount");
             return await sql.ToListAsync();
+        }
+
+        // GET: vwDepartmentCourseCount/id
+        [HttpGet("~/vwDepartmentCourseCount/{id}")]
+        public async Task<ActionResult<IEnumerable<VwDepartmentCourseCount>>> GetDepartmentCourseCount(int id)
+        {
+
+            var result = await _context.VwDepartmentCourseCount.FromSqlInterpolated($"SELECT * FROM dbo.vwDepartmentCourseCount WHERE DepartmentID={id}").ToListAsync();
+            if (result == null) return NotFound();
+            return result;
         }
 
         private bool CourseExists(int id)
