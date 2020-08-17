@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ namespace hw2.Models
     /// </summary>
     public partial class ContosoUniversityContext : DbContext
     {
+        string[] changeEntity = new [] { "Department", "Course", "Person" };
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
         {
 
@@ -30,13 +32,17 @@ namespace hw2.Models
 
         public override int SaveChanges()
         {
-            BeforeModify();
+            var name = ChangeTracker.Entries().ToList() [0].Entity.GetType().Name;
+            if (changeEntity.Contains(name))
+                BeforeModify();
             return base.SaveChanges();
         }
 
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
         {
-            BeforeModify();
+            var name = ChangeTracker.Entries().ToList() [0].Entity.GetType().Name;
+            if (changeEntity.Contains(name))
+                BeforeModify();
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
 
