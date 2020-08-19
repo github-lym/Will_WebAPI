@@ -1,6 +1,4 @@
-bin/Debug/netcoreapp3.1/hw2.dll
-obj/Debug/netcoreapp3.1/hw2.Views.pdb
-bin/Debug/netcoreapp3.1/hw2.pdb
-bin/Debug/netcoreapp3.1/hw2.Views.dll
-obj/Debug/netcoreapp3.1/hw2.csprojAssemblyReference.cache
-obj/project.nuget.cache
+bin/*
+obj/*
+.vscode/*
+.vs/*
