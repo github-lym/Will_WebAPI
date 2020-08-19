@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Projects\\hw2\\hw2.csproj": {}
+    "D:\\Projects\\hw2\\hw2.csproj": {}
   },
   "projects": {
-    "d:\\Projects\\hw2\\hw2.csproj": {
+    "D:\\Projects\\hw2\\hw2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Projects\\hw2\\hw2.csproj",
+        "projectUniqueName": "D:\\Projects\\hw2\\hw2.csproj",
         "projectName": "hw2",
-        "projectPath": "d:\\Projects\\hw2\\hw2.csproj",
+        "projectPath": "D:\\Projects\\hw2\\hw2.csproj",
         "packagesPath": "C:\\Users\\ms_ly\\.nuget\\packages\\",
-        "outputPath": "d:\\Projects\\hw2\\obj\\",
+        "outputPath": "D:\\Projects\\hw2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ms_ly\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,8 +14,7 @@ namespace hw2.Models
     public partial class ContosoUniversityContext : DbContext
     {
         readonly string[] changeEntity = new [] { "Department", "Course", "Person" };
-
-        // public virtual DbSet<CourseDepartmentPerson> CourseDepartmentPersons { get; set; }
+        public virtual DbSet<CourseDepartmentPerson> CourseDepartmentPersons { get; set; }
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
         {
 
@@ -29,6 +29,8 @@ namespace hw2.Models
             // modelBuilder.Entity<CourseDepartmentPerson>(entity =>
             // {
             //     entity.HasNoKey();
+
+            //     // entity.ToView("test_view");
 
             //     entity.Property(e => e.CourseId).HasColumnName("CourseID");
 
@@ -49,18 +51,19 @@ namespace hw2.Models
 
         }
 
-        // public partial class CourseDepartmentPerson
-        // {
-        //     public int CourseId { get; set; }
-        //     public string Title { get; set; }
-        //     public int Credits { get; set; }
-        //     public DateTime DepartmentDateModified { get; set; }
-        //     public string Name { get; set; }
-        //     public DateTime? CourseDateModified { get; set; }
-        //     public int? InstructorId { get; set; }
-        //     public string FirstName { get; set; }
-        //     public string LastName { get; set; }
-        // }
+        public partial class CourseDepartmentPerson
+        {
+            [Key]
+            public int CourseId { get; set; }
+            public string Title { get; set; }
+            public int Credits { get; set; }
+            public DateTime DepartmentDateModified { get; set; }
+            public string Name { get; set; }
+            public DateTime? CourseDateModified { get; set; }
+            public int? InstructorId { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+        }
 
         public override int SaveChanges()
         {
