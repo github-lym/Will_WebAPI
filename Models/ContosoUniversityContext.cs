@@ -7,13 +7,10 @@ namespace hw2.Models
     public partial class ContosoUniversityContext : DbContext
     {
         public ContosoUniversityContext()
-        {
-        }
+        { }
 
-        public ContosoUniversityContext(DbContextOptions<ContosoUniversityContext> options)
-            : base(options)
-        {
-        }
+        public ContosoUniversityContext(DbContextOptions<ContosoUniversityContext> options) : base(options)
+        { }
 
         public virtual DbSet<Course> Course { get; set; }
         public virtual DbSet<CourseInstructor> CourseInstructor { get; set; }
@@ -29,7 +26,7 @@ namespace hw2.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                // #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=ContosoUniversity;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }

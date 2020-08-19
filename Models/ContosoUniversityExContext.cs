@@ -13,6 +13,8 @@ namespace hw2.Models
     public partial class ContosoUniversityContext : DbContext
     {
         readonly string[] changeEntity = new [] { "Department", "Course", "Person" };
+
+        // public virtual DbSet<CourseDepartmentPerson> CourseDepartmentPersons { get; set; }
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
         {
 
@@ -24,11 +26,41 @@ namespace hw2.Models
             // modelBuilder.Entity<Course>().Property(e => e.IsDeleted).HasColumnName("IsDeleted");
             // modelBuilder.Entity<Person>().Property(e => e.IsDeleted).HasColumnName("IsDeleted");
 
+            // modelBuilder.Entity<CourseDepartmentPerson>(entity =>
+            // {
+            //     entity.HasNoKey();
+
+            //     entity.Property(e => e.CourseId).HasColumnName("CourseID");
+
+            //     entity.Property(e => e.FirstName).HasMaxLength(50);
+
+            //     entity.Property(e => e.InstructorId).HasColumnName("InstructorID");
+
+            //     entity.Property(e => e.LastName).HasMaxLength(50);
+
+            //     entity.Property(e => e.Name).HasMaxLength(50);
+
+            //     entity.Property(e => e.Title).HasMaxLength(50);
+            // });
+
             modelBuilder.Entity<Department>().HasQueryFilter(m => EF.Property<bool>(m, "IsDeleted") == false);
             modelBuilder.Entity<Person>().HasQueryFilter(m => EF.Property<bool>(m, "IsDeleted") == false);
             modelBuilder.Entity<Course>().HasQueryFilter(m => EF.Property<bool>(m, "IsDeleted") == false);
 
         }
+
+        // public partial class CourseDepartmentPerson
+        // {
+        //     public int CourseId { get; set; }
+        //     public string Title { get; set; }
+        //     public int Credits { get; set; }
+        //     public DateTime DepartmentDateModified { get; set; }
+        //     public string Name { get; set; }
+        //     public DateTime? CourseDateModified { get; set; }
+        //     public int? InstructorId { get; set; }
+        //     public string FirstName { get; set; }
+        //     public string LastName { get; set; }
+        // }
 
         public override int SaveChanges()
         {

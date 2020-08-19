@@ -107,6 +107,7 @@ namespace hw2.Controllers
             return course;
         }
 
+        #region View區
         // GET: vwCourseStudents
         [HttpGet("~/vwCourseStudents")]
         public async Task<ActionResult<IEnumerable<VwCourseStudents>>> GetCourseStudents()
@@ -157,6 +158,7 @@ namespace hw2.Controllers
             if (result == null) return NotFound();
             return result;
         }
+        #endregion
 
         private bool CourseExists(int id)
         {
