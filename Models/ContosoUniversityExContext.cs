@@ -12,17 +12,17 @@ namespace hw2.Models
     /// </summary>
     public partial class ContosoUniversityContext : DbContext
     {
-        string[] changeEntity = new [] { "Department", "Course", "Person" };
+        readonly string[] changeEntity = new [] { "Department", "Course", "Person" };
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<Department>().Property(e => e.DateModified).HasColumnName("DateModified");
-            modelBuilder.Entity<Course>().Property(e => e.DateModified).HasColumnName("DateModified");
-            modelBuilder.Entity<Person>().Property(e => e.DateModified).HasColumnName("DateModified");
+            // modelBuilder.Entity<Department>().Property(e => e.DateModified).HasColumnName("DateModified");
+            // modelBuilder.Entity<Course>().Property(e => e.DateModified).HasColumnName("DateModified");
+            // modelBuilder.Entity<Person>().Property(e => e.DateModified).HasColumnName("DateModified");
 
-            modelBuilder.Entity<Department>().Property(e => e.IsDeleted).HasColumnName("IsDeleted");
-            modelBuilder.Entity<Course>().Property(e => e.IsDeleted).HasColumnName("IsDeleted");
-            modelBuilder.Entity<Person>().Property(e => e.IsDeleted).HasColumnName("IsDeleted");
+            // modelBuilder.Entity<Department>().Property(e => e.IsDeleted).HasColumnName("IsDeleted");
+            // modelBuilder.Entity<Course>().Property(e => e.IsDeleted).HasColumnName("IsDeleted");
+            // modelBuilder.Entity<Person>().Property(e => e.IsDeleted).HasColumnName("IsDeleted");
 
             modelBuilder.Entity<Department>().HasQueryFilter(m => EF.Property<bool>(m, "IsDeleted") == false);
             modelBuilder.Entity<Person>().HasQueryFilter(m => EF.Property<bool>(m, "IsDeleted") == false);

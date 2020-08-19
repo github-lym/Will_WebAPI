@@ -7,10 +7,13 @@ namespace hw2.Models
     public partial class ContosoUniversityContext : DbContext
     {
         public ContosoUniversityContext()
-        { }
+        {
+        }
 
-        public ContosoUniversityContext(DbContextOptions<ContosoUniversityContext> options) : base(options)
-        { }
+        public ContosoUniversityContext(DbContextOptions<ContosoUniversityContext> options)
+            : base(options)
+        {
+        }
 
         public virtual DbSet<Course> Course { get; set; }
         public virtual DbSet<CourseInstructor> CourseInstructor { get; set; }
@@ -26,7 +29,7 @@ namespace hw2.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                // #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=ContosoUniversity;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }
@@ -40,9 +43,15 @@ namespace hw2.Models
 
                 entity.Property(e => e.CourseId).HasColumnName("CourseID");
 
+                entity.Property(e => e.DateModified).HasDefaultValueSql("('0001-01-01T00:00:00.0000000')");
+
                 entity.Property(e => e.DepartmentId)
                     .HasColumnName("DepartmentID")
                     .HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.IsDeleted)
+                    .IsRequired()
+                    .HasDefaultValueSql("(CONVERT([bit],(0)))");
 
                 entity.Property(e => e.Title).HasMaxLength(50);
 
@@ -87,7 +96,13 @@ namespace hw2.Models
 
                 entity.Property(e => e.Budget).HasColumnType("money");
 
+                entity.Property(e => e.DateModified).HasDefaultValueSql("('0001-01-01T00:00:00.0000000')");
+
                 entity.Property(e => e.InstructorId).HasColumnName("InstructorID");
+
+                entity.Property(e => e.IsDeleted)
+                    .IsRequired()
+                    .HasDefaultValueSql("(CONVERT([bit],(0)))");
 
                 entity.Property(e => e.Name).HasMaxLength(50);
 
@@ -154,6 +169,8 @@ namespace hw2.Models
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
+                entity.Property(e => e.DateModified).HasDefaultValueSql("('0001-01-01T00:00:00.0000000')");
+
                 entity.Property(e => e.Discriminator)
                     .IsRequired()
                     .HasMaxLength(128)
@@ -166,6 +183,10 @@ namespace hw2.Models
                     .HasMaxLength(50);
 
                 entity.Property(e => e.HireDate).HasColumnType("datetime");
+
+                entity.Property(e => e.IsDeleted)
+                    .IsRequired()
+                    .HasDefaultValueSql("(CONVERT([bit],(0)))");
 
                 entity.Property(e => e.LastName)
                     .IsRequired()
