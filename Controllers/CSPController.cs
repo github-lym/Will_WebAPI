@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using hw2.ExModels;
 using hw2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using static hw2.Models.ContosoUniversityContext;
 
 namespace hw2.Controllers
 {

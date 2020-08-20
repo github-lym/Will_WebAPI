@@ -1,8 +1,8 @@
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using hw2.ExModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -49,20 +49,6 @@ namespace hw2.Models
             modelBuilder.Entity<Person>().HasQueryFilter(m => EF.Property<bool>(m, "IsDeleted") == false);
             modelBuilder.Entity<Course>().HasQueryFilter(m => EF.Property<bool>(m, "IsDeleted") == false);
 
-        }
-
-        public partial class CourseDepartmentPerson
-        {
-            [Key]
-            public int CourseId { get; set; }
-            public string Title { get; set; }
-            public int Credits { get; set; }
-            public DateTime DepartmentDateModified { get; set; }
-            public string Name { get; set; }
-            public DateTime? CourseDateModified { get; set; }
-            public int? InstructorId { get; set; }
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
         }
 
         public override int SaveChanges()
