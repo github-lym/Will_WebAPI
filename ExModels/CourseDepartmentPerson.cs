@@ -3,10 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace hw2.ExModels
 {
-
     public partial class CourseDepartmentPerson
     {
-        [Key]
         public int CourseId { get; set; }
         public string Title { get; set; }
         public int Credits { get; set; }

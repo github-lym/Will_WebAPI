@@ -2,3 +2,6 @@ bin/*
 obj/*
 .vscode/*
 .vs/*
+.dockerignore
+Dockerfile
+PublishProfiles/*

@@ -45,6 +45,8 @@ namespace hw2.Models
             //     entity.Property(e => e.Title).HasMaxLength(50);
             // });
 
+            modelBuilder.Entity<CourseDepartmentPerson>().HasNoKey();
+
             modelBuilder.Entity<Department>().HasQueryFilter(m => EF.Property<bool>(m, "IsDeleted") == false);
             modelBuilder.Entity<Person>().HasQueryFilter(m => EF.Property<bool>(m, "IsDeleted") == false);
             modelBuilder.Entity<Course>().HasQueryFilter(m => EF.Property<bool>(m, "IsDeleted") == false);
